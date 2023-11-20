@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
-    protected static ?string $navigationGroup = 'Administration';
+    protected static ?string $navigationGroup = __('Administration');
     protected static ?string $navigationIcon = 'heroicon-m-user-group';
     protected static ?int $navigationSort = 2;
 
