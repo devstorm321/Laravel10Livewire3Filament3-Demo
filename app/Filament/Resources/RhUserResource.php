@@ -56,6 +56,10 @@ class RhUserResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
                     ->label(__('Name'))
+                    ->searchable(['users.firstname', 'users.lastname'])
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('role.type')
+                    ->label(__('Role'))
                     ->searchable()
                     ->sortable(),
             ])
