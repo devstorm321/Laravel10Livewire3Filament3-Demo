@@ -22,10 +22,10 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('first_name')
+                Forms\Components\TextInput::make('firstname')
                     ->label(__('First Name'))
                     ->helperText(__('First Name')),
-                Forms\Components\TextInput::make('last_name')
+                Forms\Components\TextInput::make('lastname')
                     ->label(__('Last Name'))
                     ->helperText(__('Last Name')),
                 Forms\Components\TextInput::make('email')
@@ -38,11 +38,11 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name')
+                Tables\Columns\TextColumn::make('firstname')
                     ->label(__('First Name'))
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('last_name')
+                Tables\Columns\TextColumn::make('lastname')
                     ->label(__('Last Name'))
                     ->searchable()
                     ->sortable(),
