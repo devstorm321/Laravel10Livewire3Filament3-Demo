@@ -7,8 +7,11 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasAvatar;
+use Filament\Panel;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use Notifiable;
     use HasFactory;
@@ -53,6 +56,18 @@ class User extends Authenticatable
 
     public function getNameAttribute()
     {
-        return $this->firstname . ' ' . $this->lastname;
+        return "{$this->firstname} {$this->lastname}";
+    }
+    public function getFilamentName(): string
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return $this->hasVerifiedEmail();
+    }
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return $this->avatar_url;
     }
 }
