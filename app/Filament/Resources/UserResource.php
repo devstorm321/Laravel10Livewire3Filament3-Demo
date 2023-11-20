@@ -23,9 +23,15 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('first_name')->helperText('First Name'),
-                Forms\Components\TextInput::make('last_name')->helperText('Last Name'),
-                Forms\Components\TextInput::make('email')->helperText('Email')
+                Forms\Components\TextInput::make('first_name')
+                    ->label(__('First Name'))
+                    ->helperText(__('First Name')),
+                Forms\Components\TextInput::make('last_name')
+                    ->label(__('Last Name'))
+                    ->helperText(__('Last Name')),
+                Forms\Components\TextInput::make('email')
+                    ->label(__('Email'))
+                    ->helperText(__('Email'))
             ]);
     }
 
@@ -33,15 +39,18 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('first_name')->label('First Name')
-                ->searchable()
-                ->sortable(),
-                Tables\Columns\TextColumn::make('last_name')->label('Last Name')
-                ->searchable()
-                ->sortable(),
-                Tables\Columns\TextColumn::make('email')->label('Email')
-                ->searchable()
-                ->sortable()
+                Tables\Columns\TextColumn::make('first_name')
+                    ->label(__('First Name'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('last_name')
+                    ->label(__('Last Name'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->label(__('Email'))
+                    ->searchable()
+                    ->sortable()
             ])
             ->filters([
                 //
