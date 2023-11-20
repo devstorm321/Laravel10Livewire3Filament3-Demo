@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return in_array($this->email, config('auth.super_admins'));
     }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
 }
