@@ -16,8 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Administration';
+    protected static ?string $navigationIcon = 'heroicon-m-user-group';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -32,8 +33,8 @@ class RoleResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('type')->label('Type')
-                ->searchable()
-                ->sortable(),
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
