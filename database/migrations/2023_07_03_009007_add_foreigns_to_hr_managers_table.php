@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignsToRhUsersTable extends Migration
+class AddForeignsToHrManagersTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('rh_users', function (Blueprint $table) {
+        Schema::table('hr_managers', function (Blueprint $table) {
             $table
                 ->foreign('entity_id')
                 ->references('id')
@@ -40,7 +40,7 @@ class AddForeignsToRhUsersTable extends Migration
      */
     public function down(): void
     {
-        Schema::table('rh_users', function (Blueprint $table) {
+        Schema::table('hr_managers', function (Blueprint $table) {
             $table->dropForeign(['entity_id']);
             $table->dropForeign(['user_id']);
             $table->dropForeign(['role_id']);

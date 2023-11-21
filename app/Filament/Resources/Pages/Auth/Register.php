@@ -14,11 +14,10 @@ class Register extends BaseRegister
                 $this->makeForm()
                     ->schema([
                         TextInput::make('firstname')
-                            ->label(__('First Name'))
-                            ->helperText(__('First Name')),
+                            ->label(__('First Name')),
                         TextInput::make('lastname')
-                            ->label(__('Last Name'))
-                            ->helperText(__('Last Name')),
+                            ->label(__('Last Name')),
+                        $this->getEmailFormComponent(),
                         $this->getPasswordFormComponent(),
                         $this->getPasswordConfirmationFormComponent(),
                     ])

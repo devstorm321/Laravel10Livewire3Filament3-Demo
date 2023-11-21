@@ -20,9 +20,9 @@ class Entity extends Model
         return $this->belongsTo(Unit::class, 'group_id');
     }
 
-    public function rhUsers()
+    public function hrManagers()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->hasMany(HrManager::class);
     }
 
     public function companyDocs()

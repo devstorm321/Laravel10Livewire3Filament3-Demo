@@ -14,7 +14,7 @@ class CreateEvaluationsTable extends Migration
         Schema::create('evaluations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('application_id');
-            $table->unsignedBigInteger('rh_user_id');
+            $table->unsignedBigInteger('hr_manager_id');
             $table->tinyInteger('note');
             $table->text('observation');
 

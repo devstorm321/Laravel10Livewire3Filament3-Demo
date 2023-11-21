@@ -15,8 +15,8 @@ class Role extends Model
 
     protected $searchableFields = ['*'];
 
-    public function rhUsers()
+    public function hrManagers()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->hasMany(HrManager::class);
     }
 }

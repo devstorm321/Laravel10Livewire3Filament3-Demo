@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRhUsersTable extends Migration
+class CreateHrManagersTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('rh_users', function (Blueprint $table) {
+        Schema::create('hr_managers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('entity_id');
             $table->unsignedBigInteger('user_id');
@@ -26,6 +26,6 @@ class CreateRhUsersTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('rh_users');
+        Schema::dropIfExists('hr_managers');
     }
 }

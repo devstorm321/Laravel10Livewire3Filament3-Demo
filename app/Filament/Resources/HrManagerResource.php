@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\RhUserResource\Pages;
-use App\Filament\Resources\RhUserResource\RelationManagers;
-use App\Models\RhUser;
+use App\Filament\Resources\HrManagerResource\Pages;
+use App\Filament\Resources\HrManagerResource\RelationManagers;
+use App\Models\HrManager;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,9 +14,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Database\Eloquent\Model;
 
-class RhUserResource extends Resource
+class HrManagerResource extends Resource
 {
-    protected static ?string $model = RhUser::class;
+    protected static ?string $model = HrManager::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -86,9 +86,9 @@ class RhUserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRhUsers::route('/'),
-            'create' => Pages\CreateRhUser::route('/create'),
-            'edit' => Pages\EditRhUser::route('/{record}/edit'),
+            'index' => Pages\ListHrManagers::route('/'),
+            'create' => Pages\CreateHrManager::route('/create'),
+            'edit' => Pages\EditHrManager::route('/{record}/edit'),
         ];
     }
 }

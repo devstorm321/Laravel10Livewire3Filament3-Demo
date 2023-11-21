@@ -4,16 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFavCampaignRhUserTable extends Migration
+class CreateFavCampaignHrManagerTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('fav_campaign_rh_user', function (Blueprint $table) {
+        Schema::create('fav_campaign_hr_manager', function (Blueprint $table) {
             $table->unsignedBigInteger('campaign_id');
-            $table->unsignedBigInteger('rh_user_id');
+            $table->unsignedBigInteger('hr_manager_id');
         });
     }
 
@@ -22,6 +22,6 @@ class CreateFavCampaignRhUserTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fav_campaign_rh_user');
+        Schema::dropIfExists('fav_campaign_hr_manager');
     }
 }

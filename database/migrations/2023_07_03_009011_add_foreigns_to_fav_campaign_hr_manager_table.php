@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignsToFavCampaignRhUserTable extends Migration
+class AddForeignsToFavCampaignHrManagerTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('fav_campaign_rh_user', function (Blueprint $table) {
+        Schema::table('fav_campaign_hr_manager', function (Blueprint $table) {
             $table
                 ->foreign('campaign_id')
                 ->references('id')
@@ -20,9 +20,9 @@ class AddForeignsToFavCampaignRhUserTable extends Migration
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('rh_user_id')
+                ->foreign('hr_manager_id')
                 ->references('id')
-                ->on('rh_users')
+                ->on('hr_managers')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -33,9 +33,9 @@ class AddForeignsToFavCampaignRhUserTable extends Migration
      */
     public function down(): void
     {
-        Schema::table('fav_campaign_rh_user', function (Blueprint $table) {
+        Schema::table('fav_campaign_hr_manager', function (Blueprint $table) {
             $table->dropForeign(['campaign_id']);
-            $table->dropForeign(['rh_user_id']);
+            $table->dropForeign(['hr_manager_id']);
         });
     }
 }

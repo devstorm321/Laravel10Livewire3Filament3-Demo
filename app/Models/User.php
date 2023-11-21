@@ -44,9 +44,9 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         return $this->hasMany(Applicant::class);
     }
 
-    public function rhUsers()
+    public function hrManagers()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->hasMany(HrManager::class);
     }
 
     public function isSuperAdmin(): bool

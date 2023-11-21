@@ -6,7 +6,7 @@ use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class RhUser extends Model
+class HrManager extends Model
 {
     use HasFactory;
     use Searchable;
@@ -15,7 +15,7 @@ class RhUser extends Model
 
     protected $searchableFields = ['*'];
 
-    protected $table = 'rh_users';
+    protected $table = 'hr_managers';
 
     public function user()
     {
@@ -44,6 +44,6 @@ class RhUser extends Model
 
     public function fav_campaigns()
     {
-        return $this->belongsToMany(Campaign::class, 'fav_campaign_rh_user');
+        return $this->belongsToMany(Campaign::class, 'fav_campaign_hr_manager');
     }
 }
