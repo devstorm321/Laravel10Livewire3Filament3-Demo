@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'dev@ss2i-digital.fr',
             'role' => 1,
             'password' => bcrypt('smart_pass'),
+            'email_verified_at' => now()
         ]);
     }
 }
