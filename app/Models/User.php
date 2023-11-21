@@ -10,12 +10,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use Notifiable;
     use HasFactory;
     use Searchable;
+    use HasRoles;
 
     protected $fillable = [
         'firstname',

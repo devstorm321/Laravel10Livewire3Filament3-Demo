@@ -23,7 +23,7 @@ class RoleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('type')->helperText(__('User role type string'))
+                Forms\Components\TextInput::make('name')->helperText(__('User role name string'))
             ]);
     }
 
@@ -31,7 +31,7 @@ class RoleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('type')->label(__('Type'))
+                Tables\Columns\TextColumn::make('name')->label(__('Type'))
                     ->searchable()
                     ->sortable(),
             ])

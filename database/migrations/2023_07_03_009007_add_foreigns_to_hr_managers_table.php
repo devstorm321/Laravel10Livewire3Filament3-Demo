@@ -26,12 +26,12 @@ class AddForeignsToHrManagersTable extends Migration
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
-            $table
-                ->foreign('role_id')
-                ->references('id')
-                ->on('roles')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
+            // $table
+            //     ->foreign('role_id')
+            //     ->references('id')
+            //     ->on('roles')
+            //     ->onUpdate('CASCADE')
+            //     ->onDelete('CASCADE');
         });
     }
 
