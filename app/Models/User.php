@@ -66,7 +66,8 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     }
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasVerifiedEmail();
+        // return $this->hasVerifiedEmail();
+        return true;
     }
     public function getFilamentAvatarUrl(): ?string
     {
