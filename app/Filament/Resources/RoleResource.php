@@ -4,14 +4,21 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RoleResource\Pages;
 use App\Filament\Resources\RoleResource\RelationManagers;
-use App\Models\Role;
+
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Facades\Filament;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Spatie\Permission\Models\Role;
+
 
 class RoleResource extends Resource
 {
@@ -23,7 +30,28 @@ class RoleResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')->helperText(__('User role name string'))
+                Section::make()
+                    ->schema([
+                        Grid::make(2)
+                            ->schema([
+                                TextInput::make('name')
+                                    ->label(__('Role Name'))
+                                    ->required(),
+                                Select::make('guard_name')
+                                    ->label(__('Guard Name'))
+                                    ->options([
+                                        'web' => 'web',
+                                        'api' => 'api',
+                                    ],)
+                                    ->default(NULL)
+                                    ->required(),
+                                Select::make('permissions')
+                                    ->multiple()
+                                    ->label(__('Permissions'))
+                                    ->relationship('permissions', 'name')
+                                    ->preload(),
+                            ]),
+                    ]),
             ]);
     }
 
@@ -34,6 +62,14 @@ class RoleResource extends Resource
                 Tables\Columns\TextColumn::make('name')->label(__('Type'))
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('permissions_count')
+                    ->counts('permissions')
+                    ->label(__('Permissions Count'))
+                    ->toggleable(true),
+                Tables\Columns\TextColumn::make('guard_name')
+                    ->toggleable(true)
+                    ->label(__('Guard Name'))
+                    ->searchable(),
             ])
             ->filters([
                 //

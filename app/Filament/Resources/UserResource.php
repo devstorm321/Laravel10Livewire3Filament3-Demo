@@ -30,7 +30,10 @@ class UserResource extends Resource
                     ->helperText(__('Last Name')),
                 Forms\Components\TextInput::make('email')
                     ->label(__('Email'))
-                    ->helperText(__('Email'))
+                    ->helperText(__('Email')),
+                Forms\Components\Select::make('roles')
+                    ->relationship('roles', 'name')
+                    ->preload()
             ]);
     }
 
@@ -52,6 +55,10 @@ class UserResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->label(__('Email Verified At'))
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('roles.name')
+                    ->label(__('Role'))
+                    ->searchable()
                     ->sortable(),
 
             ])

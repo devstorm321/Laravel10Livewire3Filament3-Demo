@@ -5,16 +5,10 @@ namespace App\Models;
 use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Models\Role as BaseRole;
 
-class Role extends Model
+class Role extends BaseRole
 {
-    use HasFactory;
-    use Searchable;
-
-    protected $fillable = ['type'];
-
-    protected $searchableFields = ['*'];
-
     public function hrManagers()
     {
         return $this->hasMany(HrManager::class);
