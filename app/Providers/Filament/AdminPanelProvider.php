@@ -36,6 +36,8 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset()
             ->emailVerification(EmailVerificationPrompt:: class)
             ->profile(EditProfile::class)
+            ->brandName('Smart Profil')
+            ->brandLogo(asset('images/logo.svg'))
             ->colors([
                 'primary' => Color::Amber,
             ])
