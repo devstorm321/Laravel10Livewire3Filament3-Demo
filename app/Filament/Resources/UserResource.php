@@ -49,7 +49,11 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email')
                     ->label(__('Email'))
                     ->searchable()
-                    ->sortable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('email_verified_at')
+                    ->label(__('Email Verified At'))
+                    ->sortable(),
+
             ])
             ->filters([
                 //

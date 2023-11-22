@@ -12,7 +12,7 @@ use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser, HasAvatar
+class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerifyEmail
 {
     use Notifiable;
     use HasFactory;
