@@ -18,10 +18,12 @@ class EntityResource extends Resource
     protected static ?string $model = Entity::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public ?array $entity = null;
 
     public static function form(Form $form): Form
     {
         return $form
+            ->statePath('entity')
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\Textarea::make('description')->required(),
