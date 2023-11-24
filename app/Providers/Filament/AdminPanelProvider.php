@@ -10,6 +10,7 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use Filament\Navigation\NavigationGroup;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -34,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ->login(Login::class)
             ->registration(Register::class)
             ->passwordReset()
-            ->emailVerification(EmailVerificationPrompt:: class)
+            ->emailVerification(EmailVerificationPrompt::class)
             ->profile(EditProfile::class)
             ->brandName('Smart Profil')
             ->brandLogo(asset('images/logo.svg'))
@@ -66,6 +67,17 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->authGuard('web');
+            ->authGuard('web')
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Recruitment'),
+                NavigationGroup::make()
+                    ->label('Outfils'),
+                NavigationGroup::make()
+                    ->label('Administration')
+                // ->icon('heroicon-o-pencil')
+                // ->collapsed(),
+
+            ]);;
     }
 }
