@@ -13,9 +13,9 @@ class AddForeignsToCareerSitesTable extends Migration
     {
         Schema::table('career_sites', function (Blueprint $table) {
             $table
-                ->foreign('entity_id')
+                ->foreign('group_id')
                 ->references('id')
-                ->on('entities')
+                ->on('groups')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
@@ -34,7 +34,7 @@ class AddForeignsToCareerSitesTable extends Migration
     public function down(): void
     {
         Schema::table('career_sites', function (Blueprint $table) {
-            $table->dropForeign(['entity_id']);
+            $table->dropForeign(['group_id']);
             $table->dropForeign(['unit_id']);
         });
     }

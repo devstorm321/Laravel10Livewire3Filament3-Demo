@@ -13,9 +13,9 @@ class AddForeignsToCompanyDocsTable extends Migration
     {
         Schema::table('company_docs', function (Blueprint $table) {
             $table
-                ->foreign('entity_id')
+                ->foreign('group_id')
                 ->references('id')
-                ->on('entities')
+                ->on('groups')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -27,7 +27,7 @@ class AddForeignsToCompanyDocsTable extends Migration
     public function down(): void
     {
         Schema::table('company_docs', function (Blueprint $table) {
-            $table->dropForeign(['entity_id']);
+            $table->dropForeign(['group_id']);
         });
     }
 }

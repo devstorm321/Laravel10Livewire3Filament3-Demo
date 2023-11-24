@@ -13,7 +13,7 @@ class CreateHrManagersTable extends Migration
     {
         Schema::create('hr_managers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('entity_id');
+            $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('role_id');
 

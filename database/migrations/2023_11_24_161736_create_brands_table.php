@@ -1,20 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateCompanyDocsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('company_docs', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('brands', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->unsignedBigInteger('group_id');
-
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ class CreateCompanyDocsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_docs');
+        Schema::dropIfExists('brands');
     }
-}
+};

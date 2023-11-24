@@ -15,9 +15,9 @@ class Unit extends Model
 
     protected $searchableFields = ['*'];
 
-    public function entities()
+    public function groups()
     {
-        return $this->hasMany(Entity::class, 'group_id');
+        return $this->hasMany(Group::class, 'group_id');
     }
 
     public function careerSites()

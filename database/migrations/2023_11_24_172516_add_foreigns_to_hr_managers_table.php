@@ -13,9 +13,9 @@ class AddForeignsToHrManagersTable extends Migration
     {
         Schema::table('hr_managers', function (Blueprint $table) {
             $table
-                ->foreign('entity_id')
+                ->foreign('group_id')
                 ->references('id')
-                ->on('entities')
+                ->on('groups')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
@@ -41,7 +41,6 @@ class AddForeignsToHrManagersTable extends Migration
     public function down(): void
     {
         Schema::table('hr_managers', function (Blueprint $table) {
-            $table->dropForeign(['entity_id']);
             $table->dropForeign(['user_id']);
             $table->dropForeign(['role_id']);
         });

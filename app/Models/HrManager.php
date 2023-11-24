@@ -11,7 +11,7 @@ class HrManager extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['entity_id', 'user_id', 'role_id'];
+    protected $fillable = ['group_id', 'user_id', 'role_id'];
 
     protected $searchableFields = ['*'];
 
@@ -37,9 +37,9 @@ class HrManager extends Model
         return $this->hasMany(Evaluation::class);
     }
 
-    public function entity()
+    public function group()
     {
-        return $this->belongsTo(Entity::class);
+        return $this->belongsTo(Group::class);
     }
 
     public function fav_campaigns()

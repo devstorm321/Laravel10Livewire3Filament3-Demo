@@ -40,9 +40,9 @@ class HrManagerResource extends Resource
                     ->required()
                     ->searchable(['type',])
                     ->preload(),
-                Forms\Components\Select::make('entity_id')
+                Forms\Components\Select::make('group_id')
                     ->relationship(
-                        name: 'entity',
+                        name: 'group',
                         titleAttribute: 'name',
                     )
                     ->searchable(['name', 'description', 'place',])
@@ -90,5 +90,11 @@ class HrManagerResource extends Resource
             'create' => Pages\CreateHrManager::route('/create'),
             'edit' => Pages\EditHrManager::route('/{record}/edit'),
         ];
+    }
+
+    
+    public static function getNavigationGroup(): ?string
+    {
+        return __('Outils');
     }
 }

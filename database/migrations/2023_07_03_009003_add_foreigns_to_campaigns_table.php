@@ -13,9 +13,9 @@ class AddForeignsToCampaignsTable extends Migration
     {
         Schema::table('campaigns', function (Blueprint $table) {
             $table
-                ->foreign('entity_id')
+                ->foreign('group_id')
                 ->references('id')
-                ->on('entities')
+                ->on('groups')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -27,7 +27,7 @@ class AddForeignsToCampaignsTable extends Migration
     public function down(): void
     {
         Schema::table('campaigns', function (Blueprint $table) {
-            $table->dropForeign(['entity_id']);
+            $table->dropForeign(['group_id']);
         });
     }
 }
