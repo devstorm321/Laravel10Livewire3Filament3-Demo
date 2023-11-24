@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::table('brands', function (Blueprint $table) {
             $table
-            ->foreign('group_id')
-            ->references('id')
-            ->on('groups')
-            ->onUpdate('CASCADE')
-            ->onDelete('CASCADE');
+                ->foreign('group_id')
+                ->references('id')
+                ->on('groups')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
     }
 
