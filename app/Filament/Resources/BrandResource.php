@@ -19,9 +19,11 @@ class BrandResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public ?array $brand=null;
     public static function form(Form $form): Form
     {
         return $form
+            ->statePath('brand')
             ->schema([
                 //
             ]);

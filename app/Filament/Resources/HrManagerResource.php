@@ -20,9 +20,11 @@ class HrManagerResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public ?array $hrmanager = null;
     public static function form(Form $form): Form
     {
         return $form
+            ->statePath('hrmanager')
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->relationship(
@@ -92,7 +94,7 @@ class HrManagerResource extends Resource
         ];
     }
 
-    
+
     public static function getNavigationGroup(): ?string
     {
         return __('Outils');

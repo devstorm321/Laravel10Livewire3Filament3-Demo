@@ -19,9 +19,11 @@ class GroupResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public ?array $group = null;
     public static function form(Form $form): Form
     {
         return $form
+            ->statePath('group')
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->label(__('Group Name'))
@@ -91,7 +93,7 @@ class GroupResource extends Resource
             'edit' => Pages\EditGroup::route('/{record}/edit'),
         ];
     }
-    
+
     public static function getNavigationGroup(): ?string
     {
         return __('Administration');
