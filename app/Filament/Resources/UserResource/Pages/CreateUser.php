@@ -15,7 +15,7 @@ class CreateUser extends CreateRecord
 
     protected function getCreatedNotificationTitle(): ?string
     {
-        return 'User registered and Password set email sent!';
+        return __('User registered and Password set email sent!');
     }
     protected function afterCreate(): void
     {
