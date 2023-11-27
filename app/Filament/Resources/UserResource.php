@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use Filament\Tables\Actions\CreateAction;
+
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -12,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Mail;
 
 class UserResource extends Resource
 {
@@ -24,15 +27,19 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('firstname')
                     ->label(__('First Name'))
-                    ->helperText(__('First Name')),
+                    ->helperText(__('First Name'))
+                    ->required(),
                 Forms\Components\TextInput::make('lastname')
                     ->label(__('Last Name'))
-                    ->helperText(__('Last Name')),
+                    ->helperText(__('Last Name'))
+                    ->required(),
                 Forms\Components\TextInput::make('email')
                     ->label(__('Email'))
-                    ->helperText(__('Email')),
+                    ->helperText(__('Email'))
+                    ->required(),
                 Forms\Components\Select::make('roles')
                     ->relationship('roles', 'name')
+                    ->required()
                     ->preload()
             ]);
     }
@@ -90,4 +97,5 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
+
 }
