@@ -74,21 +74,37 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authGuard('web')
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
-                return $builder->groups([
-                    NavigationGroup::make()
-                        ->label(__('Outfils'))
-                        ->items([
-                            ...HrManagerResource::getNavigationItems(),
-                        ]),
-                    NavigationGroup::make()
-                        ->label(__('Administration'))
-                        ->items([
-                            ...UserResource::getNavigationItems(),
-                            ...RoleResource::getNavigationItems(),
-                            ...GroupResource::getNavigationItems(),
-                            ...BrandResource::getNavigationItems(),
-                        ]),
-                ]);
+
+                if (auth()->user()->hasRole('super-admin')) {
+                    return $builder->groups([
+                        NavigationGroup::make()
+                            ->label(__('Recruitment'))
+                            ->items([
+                               
+                            ]),
+                        NavigationGroup::make()
+                            ->label(__('Outfils'))
+                            ->items([
+                                ...HrManagerResource::getNavigationItems(),
+                            ]),
+                        NavigationGroup::make()
+                            ->label(__('Administration'))
+                            ->items([
+                                ...UserResource::getNavigationItems(),
+                                ...RoleResource::getNavigationItems(),
+                                ...GroupResource::getNavigationItems(),
+                                ...BrandResource::getNavigationItems(),
+                            ]),
+                    ]);
+                } else {
+                    return $builder->groups([
+                        NavigationGroup::make()
+                            ->label(__('Outfils'))
+                            ->items([
+                                ...HrManagerResource::getNavigationItems(),
+                            ])
+                    ]);
+                }
             });
     }
 }

@@ -22,7 +22,6 @@ class GroupResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->statePath('group')
             ->schema([
                 Forms\Components\TextInput::make('name')
                     ->label(__('Group Name'))

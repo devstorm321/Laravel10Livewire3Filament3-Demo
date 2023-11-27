@@ -53,7 +53,8 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerif
 
     public function isSuperAdmin(): bool
     {
-        return in_array($this->email, config('auth.super_admins'));
+        // return in_array($this->email, config('auth.super_admins'));
+        return $this->hasRole('super-admin');
     }
 
     public function getNameAttribute()
@@ -66,7 +67,6 @@ class User extends Authenticatable implements FilamentUser, HasAvatar, MustVerif
     }
     public function canAccessPanel(Panel $panel): bool
     {
-        // return $this->hasVerifiedEmail();
         return true;
     }
     public function getFilamentAvatarUrl(): ?string

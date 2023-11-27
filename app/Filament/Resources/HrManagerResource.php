@@ -97,9 +97,13 @@ class HrManagerResource extends Resource
         ];
     }
 
-
-    public static function getNavigationGroup(): ?string
+    public static function getModelLabel(): string
     {
-        return __('Outils');
+        return __('Recruiters');
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('Recruiters');
     }
 }

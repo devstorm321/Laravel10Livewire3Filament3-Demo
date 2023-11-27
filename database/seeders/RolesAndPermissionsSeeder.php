@@ -17,6 +17,7 @@ class RolesAndPermissionsSeeder extends Seeder
         Permission::create(['name' => 'restricted']);
         Permission::create(['name' => 'limited']);
         Permission::create(['name' => 'most restricted']);
+        Permission::create(['name' => 'candidate']);
 
         // create roles and assign created permissions
 
@@ -28,6 +29,9 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $role = Role::create(['name' => 'Business Level'])
             ->givePermissionTo(['most restricted']);
+
+        $role = Role::create(['name' => 'Candidate'])
+            ->givePermissionTo(['candidate']);
 
         $role = Role::create(['name' => 'super-admin']);
         $role->givePermissionTo(Permission::all());
