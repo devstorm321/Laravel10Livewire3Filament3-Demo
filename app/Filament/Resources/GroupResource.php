@@ -91,9 +91,4 @@ class GroupResource extends Resource
             'edit' => Pages\EditGroup::route('/{record}/edit'),
         ];
     }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Administration');
-    }
 }
