@@ -19,12 +19,9 @@ class HrManagerResource extends Resource
     protected static ?string $model = HrManager::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    public ?array $hrmanager = null;
     public static function form(Form $form): Form
     {
         return $form
-            ->statePath('hrmanager')
             ->schema([
                 Forms\Components\Select::make('user_id')
                     ->relationship(
@@ -37,10 +34,10 @@ class HrManagerResource extends Resource
                 Forms\Components\Select::make('role_id')
                     ->relationship(
                         name: 'role',
-                        titleAttribute: 'type',
+                        titleAttribute: 'name',
                     )
                     ->required()
-                    ->searchable(['type',])
+                    ->searchable(['name',])
                     ->preload(),
                 Forms\Components\Select::make('group_id')
                     ->relationship(
@@ -48,6 +45,7 @@ class HrManagerResource extends Resource
                         titleAttribute: 'name',
                     )
                     ->searchable(['name', 'description', 'place',])
+                    ->preload(),
 
             ]);
     }
@@ -60,10 +58,15 @@ class HrManagerResource extends Resource
                     ->label(__('Name'))
                     ->searchable(['users.firstname', 'users.lastname'])
                     ->sortable(),
-                Tables\Columns\TextColumn::make('role.type')
+                Tables\Columns\TextColumn::make('role.name')
                     ->label(__('Role'))
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('group.name')
+                    ->label(__('Group'))
+                    ->searchable()
+                    ->sortable(),
+
             ])
             ->filters([
                 //

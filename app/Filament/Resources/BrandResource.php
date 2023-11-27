@@ -17,15 +17,18 @@ class BrandResource extends Resource
 {
     protected static ?string $model = Brand::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-m-squares-plus';
 
-    public ?array $brand=null;
     public static function form(Form $form): Form
     {
         return $form
-            ->statePath('brand')
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->label(__('Brand Name'))
+                    ->required(),
+                Forms\Components\Select::make('group_id')
+                    ->relationship('group', 'name')
+                    ->preload()
             ]);
     }
 
@@ -33,7 +36,13 @@ class BrandResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')->label(__('Brand Name'))
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('group.name')->label(__('Group Name'))
+                    ->searchable()
+                    ->sortable(),
+
             ])
             ->filters([
                 //
@@ -63,7 +72,7 @@ class BrandResource extends Resource
             'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
     }
-    
+
     public static function getNavigationGroup(): ?string
     {
         return __('Administration');

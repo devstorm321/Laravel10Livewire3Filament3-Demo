@@ -78,6 +78,6 @@ class AdminPanelProvider extends PanelProvider
                 // ->icon('heroicon-o-pencil')
                 // ->collapsed(),
 
-            ]);;
+            ]);
     }
 }

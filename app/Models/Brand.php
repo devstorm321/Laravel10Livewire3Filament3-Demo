@@ -11,7 +11,7 @@ class Brand extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'group_id'];
 
     public function group() {
         return $this->belongsTo(Group::class);

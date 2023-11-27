@@ -23,7 +23,7 @@ use Spatie\Permission\Models\Role;
 class RoleResource extends Resource
 {
     protected static ?string $model = Role::class;
-    protected static ?string $navigationIcon = 'heroicon-m-user-group';
+    protected static ?string $navigationIcon = 'carbon-user-role';
     protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
