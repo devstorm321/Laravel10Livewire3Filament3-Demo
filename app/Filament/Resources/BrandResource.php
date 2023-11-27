@@ -72,9 +72,4 @@ class BrandResource extends Resource
             'edit' => Pages\EditBrand::route('/{record}/edit'),
         ];
     }
-
-    public static function getNavigationGroup(): ?string
-    {
-        return __('Administration');
-    }
 }
