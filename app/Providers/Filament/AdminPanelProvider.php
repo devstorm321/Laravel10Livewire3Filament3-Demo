@@ -23,11 +23,12 @@ use App\Filament\Pages\Auth\EditProfile;
 use App\Filament\Pages\Auth\Register;
 use App\Filament\Pages\Auth\EmailVerification\EmailVerificationPrompt;
 use App\Filament\Pages\Auth\Login;
-use App\Filament\Resources\BrandResource;
-use App\Filament\Resources\GroupResource;
-use App\Filament\Resources\HrManagerResource;
-use App\Filament\Resources\RoleResource;
-use App\Filament\Resources\UserResource;
+use App\Filament\Resources\Administration\BrandResource;
+use App\Filament\Resources\Administration\GroupResource;
+use App\Filament\Resources\Outfils\HrManagerResource;
+use App\Filament\Resources\Administration\RoleResource;
+use App\Filament\Resources\Administration\UserResource;
+use App\Filament\Resources\Recruitment\CampaignResource;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -79,7 +80,7 @@ class AdminPanelProvider extends PanelProvider
                         NavigationGroup::make()
                             ->label(__('Recruitment'))
                             ->items([
-                               
+                                ...CampaignResource::getNavigationItems(),
                             ]),
                         NavigationGroup::make()
                             ->label(__('Outfils'))
