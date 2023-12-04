@@ -13,7 +13,7 @@ class Evaluation extends Model
 
     protected $fillable = [
         'application_id',
-        'hr_manager_id',
+        'rh_user_id',
         'note',
         'observation',
     ];
@@ -25,8 +25,8 @@ class Evaluation extends Model
         return $this->belongsTo(Application::class);
     }
 
-    public function hrManager()
+    public function rhUser()
     {
-        return $this->belongsTo(HrManager::class);
+        return $this->belongsTo(RhUser::class);
     }
 }

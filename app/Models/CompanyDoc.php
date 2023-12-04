@@ -11,14 +11,14 @@ class CompanyDoc extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['group_id'];
+    protected $fillable = ['entity_id'];
 
     protected $searchableFields = ['*'];
 
     protected $table = 'company_docs';
 
-    public function group()
+    public function entity()
     {
-        return $this->belongsTo(Group::class);
+        return $this->belongsTo(Entity::class);
     }
 }

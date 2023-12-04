@@ -6,17 +6,22 @@ use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Role extends Model
+class Documents extends Model
 {
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['type'];
+    protected $fillable = ['group_id', 'brand_id'];
 
     protected $searchableFields = ['*'];
 
-    public function rhUsers()
+    public function group()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->belongsTo(Group::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
     }
 }

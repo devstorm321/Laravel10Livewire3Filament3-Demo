@@ -19,7 +19,6 @@ class Campaign extends Model
         'requirement_list',
         'linked_in_version',
         'contracts_types',
-        'group_id',
         'public_show_entity',
         'travel_scope',
         'work_schedule',
@@ -36,6 +35,10 @@ class Campaign extends Model
         'managers',
         'survey',
         'trimoji_test',
+        'illustration',
+        'contract_type',
+        'employment_type',
+        'progress',
     ];
 
     protected $searchableFields = ['*'];
@@ -56,6 +59,9 @@ class Campaign extends Model
         'manager_email_alerts' => 'boolean',
         'managers' => 'array',
         'survey' => 'array',
+        'contract_type' => 'array',
+        'employment_type' => 'array',
+        'progress' => 'array',
     ];
 
     public function applications()
@@ -73,18 +79,13 @@ class Campaign extends Model
         return $this->hasMany(JobDocument::class);
     }
 
-    public function group()
-    {
-        return $this->belongsTo(Group::class);
-    }
-
     public function introductions()
     {
         return $this->hasMany(Introduction::class);
     }
 
-    public function hrManagers()
+    public function rhUsers()
     {
-        return $this->belongsToMany(HrManager::class, 'fav_campaign_hr_manager');
+        return $this->belongsToMany(RhUser::class, 'fav_campaign_rh_user');
     }
 }

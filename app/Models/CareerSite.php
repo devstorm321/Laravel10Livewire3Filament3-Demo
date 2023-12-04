@@ -24,6 +24,7 @@ class CareerSite extends Model
         'company_video_presentation_url',
         'cover_pic_path',
         'post_apply_text',
+        'brand_id',
     ];
 
     protected $searchableFields = ['*'];
@@ -34,13 +35,18 @@ class CareerSite extends Model
         'is_active' => 'boolean',
     ];
 
-    public function group()
-    {
-        return $this->belongsTo(Group::class);
-    }
-
     public function unit()
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
     }
 }

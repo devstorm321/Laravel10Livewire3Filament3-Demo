@@ -11,17 +11,22 @@ class Unit extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'place'];
+    protected $fillable = ['name', 'place', 'brand_id'];
 
     protected $searchableFields = ['*'];
-
-    public function groups()
-    {
-        return $this->hasMany(Group::class, 'group_id');
-    }
 
     public function careerSites()
     {
         return $this->hasMany(CareerSite::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function rhUsers()
+    {
+        return $this->hasMany(RhUser::class);
     }
 }
