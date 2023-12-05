@@ -11,12 +11,7 @@ class Evaluation extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = [
-        'application_id',
-        'rh_user_id',
-        'note',
-        'observation',
-    ];
+    protected $fillable = ['application_id', 'note', 'observation', 'user_id'];
 
     protected $searchableFields = ['*'];
 
@@ -25,8 +20,8 @@ class Evaluation extends Model
         return $this->belongsTo(Application::class);
     }
 
-    public function rhUser()
+    public function user()
     {
-        return $this->belongsTo(RhUser::class);
+        return $this->belongsTo(User::class);
     }
 }

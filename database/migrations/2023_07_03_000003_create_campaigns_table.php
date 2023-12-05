@@ -40,6 +40,9 @@ class CreateCampaignsTable extends Migration
             $table->json('contract_type');
             $table->json('employment_type');
             $table->json('progress');
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('unit_id')->nullable();
 
             $table->timestamps();
         });

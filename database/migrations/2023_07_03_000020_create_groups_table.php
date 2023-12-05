@@ -15,7 +15,12 @@ class CreateGroupsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description');
-            $table->string('place');
+            $table->string('groupable_type');
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->unsignedBigInteger('groupable_id');
+
+            $table->index('groupable_type');
+            $table->index('groupable_id');
 
             $table->timestamps();
         });

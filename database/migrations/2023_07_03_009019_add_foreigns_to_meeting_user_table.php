@@ -4,25 +4,25 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignsToUnitsTable extends Migration
+class AddForeignsToMeetingUserTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('units', function (Blueprint $table) {
+        Schema::table('meeting_user', function (Blueprint $table) {
             $table
-                ->foreign('client_id')
+                ->foreign('user_id')
                 ->references('id')
-                ->on('clients')
+                ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('brand_id')
+                ->foreign('meeting_id')
                 ->references('id')
-                ->on('brands')
+                ->on('meetings')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -33,9 +33,9 @@ class AddForeignsToUnitsTable extends Migration
      */
     public function down(): void
     {
-        Schema::table('units', function (Blueprint $table) {
-            $table->dropForeign(['client_id']);
-            $table->dropForeign(['brand_id']);
+        Schema::table('meeting_user', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+            $table->dropForeign(['meeting_id']);
         });
     }
 }

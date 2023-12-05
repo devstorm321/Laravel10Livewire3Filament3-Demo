@@ -11,13 +11,29 @@ class Group extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'description', 'place'];
+    protected $fillable = [
+        'name',
+        'description',
+        'groupable_type',
+        'client_id',
+        'groupable_id',
+    ];
 
     protected $searchableFields = ['*'];
 
-    public function rhUsers()
+    public function brands()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->hasMany(Brand::class);
+    }
+
+    public function client()
+    {
+        return $this->belongsTo(Client::class);
+    }
+
+    public function allEntityDocuments()
+    {
+        return $this->hasMany(EntityDocuments::class);
     }
 
     public function careerSites()
@@ -25,13 +41,13 @@ class Group extends Model
         return $this->hasMany(CareerSite::class);
     }
 
-    public function brands()
+    public function campaigns()
     {
-        return $this->hasMany(Brand::class);
+        return $this->hasMany(Campaign::class);
     }
 
-    public function allDocuments()
+    public function roles()
     {
-        return $this->hasMany(Documents::class);
+        return $this->morphToMany(Role::class, 'roleable');
     }
 }

@@ -20,6 +20,7 @@ class CreateApplicantsTable extends Migration
             $table->string('title');
             $table->tinyInteger('note');
             $table->string('status');
+
             $table->timestamps();
             $table->softDeletes();
         });

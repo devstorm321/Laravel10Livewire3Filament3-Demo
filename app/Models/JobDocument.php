@@ -11,7 +11,7 @@ class JobDocument extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['campaign_id', 'name', 'type', 'path'];
+    protected $fillable = ['campaign_id', 'name', 'type', 'path', 'label'];
 
     protected $searchableFields = ['*'];
 

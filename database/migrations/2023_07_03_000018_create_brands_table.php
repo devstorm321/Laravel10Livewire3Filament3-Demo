@@ -13,8 +13,15 @@ class CreateBrandsTable extends Migration
     {
         Schema::create('brands', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('group_id');
             $table->string('name');
+            $table->text('description');
+            $table->unsignedBigInteger('brandable_id');
+            $table->string('brandable_type');
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->unsignedBigInteger('group_id')->nullable();
+
+            $table->index('brandable_id');
+            $table->index('brandable_type');
 
             $table->timestamps();
         });

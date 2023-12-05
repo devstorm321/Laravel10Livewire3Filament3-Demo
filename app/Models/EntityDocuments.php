@@ -6,14 +6,24 @@ use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Documents extends Model
+class EntityDocuments extends Model
 {
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['group_id', 'brand_id', 'unit_id'];
+    protected $fillable = [
+        'group_id',
+        'brand_id',
+        'unit_id',
+        'name',
+        'path',
+        'type',
+        'label',
+    ];
 
     protected $searchableFields = ['*'];
+
+    protected $table = 'entity_documents';
 
     public function group()
     {

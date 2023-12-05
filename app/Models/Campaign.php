@@ -39,6 +39,9 @@ class Campaign extends Model
         'contract_type',
         'employment_type',
         'progress',
+        'group_id',
+        'brand_id',
+        'unit_id',
     ];
 
     protected $searchableFields = ['*'];
@@ -84,8 +87,18 @@ class Campaign extends Model
         return $this->hasMany(Introduction::class);
     }
 
-    public function rhUsers()
+    public function group()
     {
-        return $this->belongsToMany(RhUser::class, 'fav_campaign_rh_user');
+        return $this->belongsTo(Group::class);
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
     }
 }

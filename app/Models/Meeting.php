@@ -14,7 +14,6 @@ class Meeting extends Model
     protected $fillable = [
         'campaign_id',
         'applicant_id',
-        'rh_user_id',
         'datetime',
         'visio_link',
         'phone_contact',
@@ -32,13 +31,13 @@ class Meeting extends Model
         return $this->belongsTo(Applicant::class);
     }
 
-    public function rhUser()
-    {
-        return $this->belongsTo(RhUser::class);
-    }
-
     public function campaign()
     {
         return $this->belongsTo(Campaign::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
     }
 }

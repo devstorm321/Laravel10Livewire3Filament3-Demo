@@ -15,7 +15,6 @@ class CreateMeetingsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('campaign_id');
             $table->unsignedBigInteger('applicant_id');
-            $table->unsignedBigInteger('rh_user_id');
             $table->dateTime('datetime');
             $table->string('visio_link')->nullable();
             $table->string('phone_contact')->nullable();

@@ -25,13 +25,6 @@ class AddForeignsToMeetingsTable extends Migration
                 ->on('applicants')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
-
-            $table
-                ->foreign('rh_user_id')
-                ->references('id')
-                ->on('rh_users')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
         });
     }
 
@@ -43,7 +36,6 @@ class AddForeignsToMeetingsTable extends Migration
         Schema::table('meetings', function (Blueprint $table) {
             $table->dropForeign(['campaign_id']);
             $table->dropForeign(['applicant_id']);
-            $table->dropForeign(['rh_user_id']);
         });
     }
 }

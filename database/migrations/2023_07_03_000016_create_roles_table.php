@@ -4,19 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEvaluationsTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('evaluations', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('application_id');
-            $table->tinyInteger('note');
-            $table->text('observation');
-            $table->unsignedBigInteger('user_id');
+            $table->string('name');
 
             $table->timestamps();
         });
@@ -27,6 +24,6 @@ class CreateEvaluationsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('evaluations');
+        Schema::dropIfExists('roles');
     }
 }

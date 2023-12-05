@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LANG', 'en'),
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,19 +110,6 @@ return [
     */
 
     'faker_locale' => 'en_US',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Available locales
-    |--------------------------------------------------------------------------
-    |
-    | List all locales that your application works with
-    |
-    */
-    'available_locales' => [
-        'English' => 'en',
-        'French' => 'fr',
-    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -182,7 +169,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Spatie\Permission\PermissionServiceProvider::class,
     ])->toArray(),
 
     /*

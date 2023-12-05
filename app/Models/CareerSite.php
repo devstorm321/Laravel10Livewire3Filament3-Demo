@@ -12,8 +12,6 @@ class CareerSite extends Model
     use Searchable;
 
     protected $fillable = [
-        'group_id',
-        'unit_id',
         'is_active',
         'name',
         'url',
@@ -25,6 +23,8 @@ class CareerSite extends Model
         'cover_pic_path',
         'post_apply_text',
         'brand_id',
+        'group_id',
+        'unit_id',
     ];
 
     protected $searchableFields = ['*'];
@@ -35,11 +35,6 @@ class CareerSite extends Model
         'is_active' => 'boolean',
     ];
 
-    public function unit()
-    {
-        return $this->belongsTo(Unit::class);
-    }
-
     public function brand()
     {
         return $this->belongsTo(Brand::class);
@@ -48,5 +43,10 @@ class CareerSite extends Model
     public function group()
     {
         return $this->belongsTo(Group::class);
+    }
+
+    public function unit()
+    {
+        return $this->belongsTo(Unit::class);
     }
 }

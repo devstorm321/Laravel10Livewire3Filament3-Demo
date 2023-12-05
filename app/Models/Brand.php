@@ -11,14 +11,16 @@ class Brand extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['group_id', 'name'];
+    protected $fillable = [
+        'name',
+        'description',
+        'brandable_id',
+        'brandable_type',
+        'client_id',
+        'group_id',
+    ];
 
     protected $searchableFields = ['*'];
-
-    public function careerSite()
-    {
-        return $this->hasOne(CareerSite::class);
-    }
 
     public function units()
     {
@@ -30,13 +32,28 @@ class Brand extends Model
         return $this->belongsTo(Group::class);
     }
 
-    public function allDocuments()
+    public function client()
     {
-        return $this->hasMany(Documents::class);
+        return $this->belongsTo(Client::class);
     }
 
-    public function rhUsers()
+    public function allEntityDocuments()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->hasMany(EntityDocuments::class);
+    }
+
+    public function careerSites()
+    {
+        return $this->hasMany(CareerSite::class);
+    }
+
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class);
+    }
+
+    public function roles()
+    {
+        return $this->morphToMany(Role::class, 'roleable');
     }
 }

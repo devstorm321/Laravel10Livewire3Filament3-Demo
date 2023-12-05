@@ -4,21 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignsToEvaluationsTable extends Migration
+class AddForeignsToClientsTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('evaluations', function (Blueprint $table) {
-            $table
-                ->foreign('application_id')
-                ->references('id')
-                ->on('applications')
-                ->onUpdate('CASCADE')
-                ->onDelete('CASCADE');
-
+        Schema::table('clients', function (Blueprint $table) {
             $table
                 ->foreign('user_id')
                 ->references('id')
@@ -33,8 +26,7 @@ class AddForeignsToEvaluationsTable extends Migration
      */
     public function down(): void
     {
-        Schema::table('evaluations', function (Blueprint $table) {
-            $table->dropForeign(['application_id']);
+        Schema::table('clients', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
         });
     }

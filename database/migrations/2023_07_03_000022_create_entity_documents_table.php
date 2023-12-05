@@ -4,19 +4,21 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJobDocumentsTable extends Migration
+class CreateEntityDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('job_documents', function (Blueprint $table) {
+        Schema::create('entity_documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('campaign_id');
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('unit_id')->nullable();
             $table->string('name');
+            $table->string('path')->nullable();
             $table->string('type');
-            $table->string('path');
             $table->string('label');
 
             $table->timestamps();
@@ -28,6 +30,6 @@ class CreateJobDocumentsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('job_documents');
+        Schema::dropIfExists('entity_documents');
     }
 }

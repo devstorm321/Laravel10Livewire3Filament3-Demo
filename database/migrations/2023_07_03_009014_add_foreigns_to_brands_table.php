@@ -13,6 +13,13 @@ class AddForeignsToBrandsTable extends Migration
     {
         Schema::table('brands', function (Blueprint $table) {
             $table
+                ->foreign('client_id')
+                ->references('id')
+                ->on('clients')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+
+            $table
                 ->foreign('group_id')
                 ->references('id')
                 ->on('groups')
@@ -27,6 +34,7 @@ class AddForeignsToBrandsTable extends Migration
     public function down(): void
     {
         Schema::table('brands', function (Blueprint $table) {
+            $table->dropForeign(['client_id']);
             $table->dropForeign(['group_id']);
         });
     }

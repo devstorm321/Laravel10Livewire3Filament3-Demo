@@ -14,8 +14,14 @@ class CreateUnitsTable extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('place');
-            $table->unsignedBigInteger('brand_id');
+            $table->text('description');
+            $table->unsignedBigInteger('unitable_id');
+            $table->string('unitable_type');
+            $table->unsignedBigInteger('client_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
+
+            $table->index('unitable_id');
+            $table->index('unitable_type');
 
             $table->timestamps();
         });

@@ -11,12 +11,22 @@ class Role extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['type'];
+    protected $fillable = ['name'];
 
     protected $searchableFields = ['*'];
 
-    public function rhUsers()
+    public function groups()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->morphedByMany(Group::class, 'roleable');
+    }
+
+    public function brands()
+    {
+        return $this->morphedByMany(Brand::class, 'roleable');
+    }
+
+    public function units()
+    {
+        return $this->morphedByMany(Unit::class, 'model_has_role');
     }
 }

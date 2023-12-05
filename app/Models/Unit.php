@@ -11,22 +11,44 @@ class Unit extends Model
     use HasFactory;
     use Searchable;
 
-    protected $fillable = ['name', 'place', 'brand_id'];
+    protected $fillable = [
+        'name',
+        'description',
+        'unitable_id',
+        'unitable_type',
+        'client_id',
+        'brand_id',
+    ];
 
     protected $searchableFields = ['*'];
-
-    public function careerSites()
-    {
-        return $this->hasMany(CareerSite::class);
-    }
 
     public function brand()
     {
         return $this->belongsTo(Brand::class);
     }
 
-    public function rhUsers()
+    public function client()
     {
-        return $this->hasMany(RhUser::class);
+        return $this->belongsTo(Client::class);
+    }
+
+    public function allEntityDocuments()
+    {
+        return $this->hasMany(EntityDocuments::class);
+    }
+
+    public function careerSites()
+    {
+        return $this->hasMany(CareerSite::class);
+    }
+
+    public function campaigns()
+    {
+        return $this->hasMany(Campaign::class);
+    }
+
+    public function roles()
+    {
+        return $this->morphToMany(Role::class, 'model_has_role');
     }
 }
