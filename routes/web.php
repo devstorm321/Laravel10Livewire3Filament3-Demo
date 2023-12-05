@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('career-site/{token}', \App\Livewire\CareerSite::class)->name('career-site');
