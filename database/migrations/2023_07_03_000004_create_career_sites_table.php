@@ -25,6 +25,7 @@ class CreateCareerSitesTable extends Migration
             $table->string('company_video_presentation_url')->nullable();
             $table->string('cover_pic_path')->nullable();
             $table->text('post_apply_text');
+            $table->unsignedBigInteger('brand_id');
 
             $table->timestamps();
         });

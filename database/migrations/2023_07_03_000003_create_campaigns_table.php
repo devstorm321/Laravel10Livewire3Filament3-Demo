@@ -20,7 +20,6 @@ class CreateCampaignsTable extends Migration
             $table->json('requirement_list')->nullable();
             $table->json('linked_in_version')->nullable();
             $table->json('contracts_types')->nullable();
-            $table->unsignedBigInteger('group_id');
             $table->boolean('public_show_entity');
             $table->json('travel_scope')->nullable();
             $table->json('work_schedule')->nullable();
@@ -36,7 +35,11 @@ class CreateCampaignsTable extends Migration
             $table->boolean('manager_email_alerts');
             $table->json('managers');
             $table->json('survey')->nullable();
-            $table->string('trimoji_test');
+            $table->string('trimoji_test')->nullable();
+            $table->string('illustration')->nullable();
+            $table->json('contract_type');
+            $table->json('employment_type');
+            $table->json('progress');
 
             $table->timestamps();
         });

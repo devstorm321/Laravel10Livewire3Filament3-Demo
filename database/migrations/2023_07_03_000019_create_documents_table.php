@@ -4,16 +4,17 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCompanyDocsTable extends Migration
+class CreateDocumentsTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('company_docs', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('group_id');
+            $table->unsignedBigInteger('group_id')->nullable();
+            $table->unsignedBigInteger('brand_id')->nullable();
 
             $table->timestamps();
         });
@@ -24,6 +25,6 @@ class CreateCompanyDocsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('company_docs');
+        Schema::dropIfExists('documents');
     }
 }

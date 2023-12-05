@@ -4,14 +4,14 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignsToHrManagersTable extends Migration
+class AddForeignsToCareerSitesTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('hr_managers', function (Blueprint $table) {
+        Schema::table('career_sites', function (Blueprint $table) {
             $table
                 ->foreign('group_id')
                 ->references('id')
@@ -20,18 +20,18 @@ class AddForeignsToHrManagersTable extends Migration
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('user_id')
+                ->foreign('unit_id')
                 ->references('id')
-                ->on('users')
+                ->on('units')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 
-            // $table
-            //     ->foreign('role_id')
-            //     ->references('id')
-            //     ->on('roles')
-            //     ->onUpdate('CASCADE')
-            //     ->onDelete('CASCADE');
+            $table
+                ->foreign('brand_id')
+                ->references('id')
+                ->on('brands')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
     }
 
@@ -40,9 +40,10 @@ class AddForeignsToHrManagersTable extends Migration
      */
     public function down(): void
     {
-        Schema::table('hr_managers', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
-            $table->dropForeign(['role_id']);
+        Schema::table('career_sites', function (Blueprint $table) {
+            $table->dropForeign(['group_id']);
+            $table->dropForeign(['unit_id']);
+            $table->dropForeign(['brand_id']);
         });
     }
 }

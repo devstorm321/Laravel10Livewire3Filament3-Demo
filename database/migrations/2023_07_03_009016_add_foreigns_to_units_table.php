@@ -4,18 +4,18 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddForeignsToCompanyDocsTable extends Migration
+class AddForeignsToUnitsTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::table('company_docs', function (Blueprint $table) {
+        Schema::table('units', function (Blueprint $table) {
             $table
-                ->foreign('group_id')
+                ->foreign('brand_id')
                 ->references('id')
-                ->on('groups')
+                ->on('brands')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -26,8 +26,8 @@ class AddForeignsToCompanyDocsTable extends Migration
      */
     public function down(): void
     {
-        Schema::table('company_docs', function (Blueprint $table) {
-            $table->dropForeign(['group_id']);
+        Schema::table('units', function (Blueprint $table) {
+            $table->dropForeign(['brand_id']);
         });
     }
 }

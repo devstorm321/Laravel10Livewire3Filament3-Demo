@@ -4,24 +4,22 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateApplicantsTable extends Migration
+class CreateRhUsersTable extends Migration
 {
     /**
      * Run the migrations.
      */
     public function up(): void
     {
-        Schema::create('applicants', function (Blueprint $table) {
+        Schema::create('rh_users', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('group_id')->nullable();
             $table->unsignedBigInteger('user_id');
-            $table->longText('observations');
-            $table->string('linked_in');
-            $table->boolean('opt_in_contact');
-            $table->string('title');
-            $table->tinyInteger('note');
-            $table->string('status');
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('brand_id')->nullable();
+            $table->unsignedBigInteger('unit_id')->nullable();
+
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -30,6 +28,6 @@ class CreateApplicantsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('applicants');
+        Schema::dropIfExists('rh_users');
     }
 }
