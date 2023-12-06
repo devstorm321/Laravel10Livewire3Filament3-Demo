@@ -4,17 +4,16 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCampaignsTable extends Migration
-{
+class CreateCampaignsTable extends Migration {
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
+    public function up(): void {
         Schema::create('campaigns', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('video_interview_url')->nullable();
+            $table->string('video_presentation_url')->nullable();
             $table->text('description');
             $table->string('mail_contact')->nullable();
             $table->json('requirement_list')->nullable();
@@ -51,8 +50,7 @@ class CreateCampaignsTable extends Migration
     /**
      * Reverse the migrations.
      */
-    public function down(): void
-    {
+    public function down(): void {
         Schema::dropIfExists('campaigns');
     }
 }

@@ -6,14 +6,14 @@ use App\Models\Scopes\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Campaign extends Model
-{
+class Campaign extends Model {
     use HasFactory;
     use Searchable;
 
     protected $fillable = [
         'title',
         'video_interview_url',
+        'video_presentation_url',
         'description',
         'mail_contact',
         'requirement_list',
@@ -67,38 +67,31 @@ class Campaign extends Model
         'progress' => 'array',
     ];
 
-    public function applications()
-    {
+    public function applications() {
         return $this->hasMany(Application::class);
     }
 
-    public function meetings()
-    {
+    public function meetings() {
         return $this->hasMany(Meeting::class);
     }
 
-    public function jobDocuments()
-    {
+    public function jobDocuments() {
         return $this->hasMany(JobDocument::class);
     }
 
-    public function introductions()
-    {
+    public function introductions() {
         return $this->hasMany(Introduction::class);
     }
 
-    public function group()
-    {
+    public function group() {
         return $this->belongsTo(Group::class);
     }
 
-    public function brand()
-    {
+    public function brand() {
         return $this->belongsTo(Brand::class);
     }
 
-    public function unit()
-    {
+    public function unit() {
         return $this->belongsTo(Unit::class);
     }
 }
