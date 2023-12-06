@@ -13,7 +13,6 @@ class CreateCampaignsTable extends Migration {
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('video_interview_url')->nullable();
-            $table->string('video_presentation_url')->nullable();
             $table->text('description');
             $table->string('mail_contact')->nullable();
             $table->json('requirement_list')->nullable();

@@ -13,7 +13,6 @@ class Campaign extends Model {
     protected $fillable = [
         'title',
         'video_interview_url',
-        'video_presentation_url',
         'description',
         'mail_contact',
         'requirement_list',

@@ -63,8 +63,8 @@ class CampaignResource extends Resource {
                                     ->required()
                                     ->maxLength(255),
 
-                                Forms\Components\TextInput::make('video_presentation_url')
-                                    ->label('Video presentation')
+                                Forms\Components\TextInput::make('video_interview_url')
+                                    ->label('Insert a video presentation of the position')
                                     ->url()
                                     ->maxLength(255),
 
@@ -93,72 +93,122 @@ class CampaignResource extends Resource {
                             ])
                             ->columns(2),
 
-                        Forms\Components\Section::make('title')
+                        Forms\Components\Section::make('')
                             ->schema([
-                                Forms\Components\TextInput::make('title')
-                                    ->label('SKU (Stock Keeping Unit)')
-                                    ->maxLength(255)
+                                Forms\Components\CheckboxList::make('contracts_types')
+                                    ->label('Type of position')
+                                    ->options([
+                                        'cdd' => 'CDD',
+                                        'cdi' => 'CDI',
+                                        'stage' => 'Stage',
+                                        'alternance' => 'Alternance',
+                                        'interim' => 'Interim'
+                                    ])
+                                    ->columns(5)
+                                    ->columnSpan('full')
                                     ->required(),
 
-                                Forms\Components\TextInput::make('title')
-                                    ->label('Barcode (ISBN, UPC, GTIN, etc.)')
-                                    ->maxLength(255)
+                                Forms\Components\CheckboxList::make('travel_scope')
+                                    ->label('Travel zone')
+                                    ->options([
+                                        'department' => 'Department',
+                                        'national' => 'National',
+                                        'international' => 'International',
+                                        'no' => 'No'
+                                    ])
+                                    ->columns(4)
+                                    ->columnSpan('full')
                                     ->required(),
 
-                                Forms\Components\TextInput::make('title')
-                                    ->label('Quantity')
+                                Forms\Components\CheckboxList::make('employment_type')
+                                    ->label('Opening hours')
+                                    ->options([
+                                        'full-time' => 'Full-time',
+                                        'part-time' => 'Part-time work',
+                                        'teleworking' => 'Teleworking',
+                                        'partial_teleworking' => 'Partial teleworking'
+                                    ])
+                                    ->columns(4)
+                                    ->columnSpan('full')
+                                    ->required(),
+
+                                Forms\Components\DatePicker::make('start_date_expected')
+                                    ->label('Starting date')
+                                    ->default(now())
+                                    ->columnSpan('full'),
+
+                                Forms\Components\TextInput::make('salary_range')
+                                    ->label('Salary')
+                                    ->helperText('Gross annual salary range.')
                                     ->numeric()
-                                    ->rules(['integer', 'min:0'])
-                                    ->required(),
+                                    ->prefix('€'),
 
-                                Forms\Components\TextInput::make('title')
-                                    ->helperText('The safety stock is the limit stock for your products which alerts you if the product stock will soon be out of stock.')
-                                    ->numeric()
-                                    ->rules(['integer', 'min:0'])
-                                    ->required(),
+                                Forms\Components\Toggle::make('show_salary_range')
+                                    ->label('Show salary')
+                                    ->inline(false)
+                                    ->default(false),
+
+                                Forms\Components\TextInput::make('work_location_coordinates')
+                                    ->label('Place of work')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->columnSpan('full'),
                             ])
                             ->columns(2),
 
-                        Forms\Components\Section::make('title')
+                        Forms\Components\Section::make('')
                             ->schema([
-                                Forms\Components\Checkbox::make('title')
-                                    ->label('This product can be returned'),
+                                Forms\Components\Select::make('private_tags')
+                                    ->label('Private tags')
+                                    ->searchable()
+                                    ->multiple(),
 
-                                Forms\Components\Checkbox::make('title')
-                                    ->label('This product will be shipped'),
+                                Forms\Components\Select::make('public_tags')
+                                    ->label('Public tags')
+                                    ->searchable()
+                                    ->multiple(),
+
+                                Forms\Components\Select::make('managers')
+                                    ->label('Manager')
+                                    ->searchable()
+                                    ->multiple()
+                                    ->columnSpan('full'),
+
+                                Forms\Components\Toggle::make('manager_email_alerts')
+                                    ->label('Notify managers by email when a job application is received')
+                                    ->default(false)
+                                    ->columnSpan('full'),
                             ])
                             ->columns(2),
+
+                        // Forms\Components\Section::make('')
+                        //     ->schema([
+                        //         Forms\Components\Toggle::make('')
+                        //             ->label('Insert a questionnaire')
+                        //             ->default(false),
+
+                        //         Forms\Components\Toggle::make('')
+                        //             ->label('Insert a personality test')
+                        //             ->default(false),
+                        //     ])
+                        //     ->columns(2),
                     ])
                     ->columnSpan(['lg' => 2]),
 
-                Forms\Components\Group::make()
-                    ->schema([
-                        Forms\Components\Section::make('title')
-                            ->schema([
-                                Forms\Components\Toggle::make('title')
-                                    ->label('Visible')
-                                    ->helperText('This product will be hidden from all sales channels.')
-                                    ->default(true),
+                // Forms\Components\Group::make()
+                //     ->schema([
+                //         Forms\Components\Section::make('')
+                //             ->schema([
+                //                 Forms\Components\Toggle::make('title')
+                //                     ->label('Share this campaign')
+                //                     ->default(false),
 
-                                Forms\Components\DatePicker::make('title')
-                                    ->label('Availability')
-                                    ->default(now())
-                                    ->required(),
-                            ]),
-
-                        Forms\Components\Section::make('title')
-                            ->schema([
-                                Forms\Components\Select::make('title')
-                                    ->relationship('brand', 'name')
-                                    ->searchable(),
-
-                                Forms\Components\Select::make('title')
-                                    ->relationship('categories', 'name')
-                                    ->multiple()
-                                    ->required(),
-                            ]),
-                    ])
-                    ->columnSpan(['lg' => 1]),
+                //                 Forms\Components\Toggle::make('title')
+                //                     ->label('Follow the campaign')
+                //                     ->default(false),
+                //             ]),
+                //     ])
+                //     ->columnSpan(['lg' => 1]),
             ])
             ->columns(3);
     }
