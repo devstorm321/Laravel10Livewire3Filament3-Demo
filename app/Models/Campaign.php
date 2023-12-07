@@ -19,7 +19,7 @@ class Campaign extends Model
         'requirement_list',
         'linked_in_version',
         'contracts_types',
-        'entity_id',
+        'group_id',
         'public_show_entity',
         'travel_scope',
         'work_schedule',
@@ -73,9 +73,9 @@ class Campaign extends Model
         return $this->hasMany(JobDocument::class);
     }
 
-    public function entity()
+    public function group()
     {
-        return $this->belongsTo(Entity::class);
+        return $this->belongsTo(Group::class);
     }
 
     public function introductions()
@@ -83,8 +83,8 @@ class Campaign extends Model
         return $this->hasMany(Introduction::class);
     }
 
-    public function rhUsers()
+    public function hrManagers()
     {
-        return $this->belongsToMany(RhUser::class, 'fav_campaign_rh_user');
+        return $this->belongsToMany(HrManager::class, 'fav_campaign_hr_manager');
     }
 }

@@ -20,9 +20,9 @@ class AddForeignsToEvaluationsTable extends Migration
                 ->onDelete('CASCADE');
 
             $table
-                ->foreign('rh_user_id')
+                ->foreign('hr_manager_id')
                 ->references('id')
-                ->on('rh_users')
+                ->on('hr_managers')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
@@ -35,7 +35,7 @@ class AddForeignsToEvaluationsTable extends Migration
     {
         Schema::table('evaluations', function (Blueprint $table) {
             $table->dropForeign(['application_id']);
-            $table->dropForeign(['rh_user_id']);
+            $table->dropForeign(['hr_manager_id']);
         });
     }
 }

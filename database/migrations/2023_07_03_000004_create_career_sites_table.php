@@ -13,7 +13,7 @@ class CreateCareerSitesTable extends Migration
     {
         Schema::create('career_sites', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('entity_id');
+            $table->unsignedBigInteger('group_id');
             $table->unsignedBigInteger('unit_id')->nullable();
             $table->boolean('is_active');
             $table->string('name');

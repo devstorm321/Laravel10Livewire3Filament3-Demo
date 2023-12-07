@@ -20,7 +20,7 @@ class CreateCampaignsTable extends Migration
             $table->json('requirement_list')->nullable();
             $table->json('linked_in_version')->nullable();
             $table->json('contracts_types')->nullable();
-            $table->unsignedBigInteger('entity_id');
+            $table->unsignedBigInteger('group_id');
             $table->boolean('public_show_entity');
             $table->json('travel_scope')->nullable();
             $table->json('work_schedule')->nullable();

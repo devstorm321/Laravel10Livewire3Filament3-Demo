@@ -13,7 +13,7 @@ class CreateCompanyDocsTable extends Migration
     {
         Schema::create('company_docs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('entity_id');
+            $table->unsignedBigInteger('group_id');
 
             $table->timestamps();
         });

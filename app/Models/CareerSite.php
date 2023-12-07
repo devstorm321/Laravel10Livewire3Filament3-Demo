@@ -12,7 +12,7 @@ class CareerSite extends Model
     use Searchable;
 
     protected $fillable = [
-        'entity_id',
+        'group_id',
         'unit_id',
         'is_active',
         'name',
@@ -34,9 +34,9 @@ class CareerSite extends Model
         'is_active' => 'boolean',
     ];
 
-    public function entity()
+    public function group()
     {
-        return $this->belongsTo(Entity::class);
+        return $this->belongsTo(Group::class);
     }
 
     public function unit()
